@@ -4,15 +4,7 @@ MATH 210 at the [University of British Columbia](http://www.math.ubc.ca) is an i
 
 ### Lecture Notes
 
-* Week 1
-* Week 2
-* Week 3
-* Week 4
-* Week 5
-* Week 6
-* Week 7
-* Week 8
-* Week 9
-* Week 10
-* Week 11
-* Week 12
+| Date | Week | Notebook | Topics | Further Reading |
+| :---: | :---: | :---: | :---: | :---: |
+| January 3 | 1 | [notes-2018-01-03](notes-week-01/notes-2018-01-03.ipynb) | [Jupyter](https://jupyter.org), [Markdown](https://daringfireball.net/projects/markdown/), and [Python](https://python.org) |
+| January 5 | 1 | [notes-2018-01-05](notes-week-01/notes-2018-01-05.ipynb) |  |
