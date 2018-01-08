@@ -6,5 +6,5 @@ MATH 210 at the [University of British Columbia](http://www.math.ubc.ca) is an i
 
 | Date | Week | Notebook | Topics | Further Reading |
 | :---: | :---: | :---: | :---: | :---: |
-| January 3 | 1 | [notes-2018-01-03](notes-week-01/notes-2018-01-03.ipynb) | [Jupyter](https://jupyter.org), [Markdown](https://daringfireball.net/projects/markdown/), and [Python](https://python.org) |
-| January 5 | 1 | [notes-2018-01-05](notes-week-01/notes-2018-01-05.ipynb) |  |
+| January 3 | 1 | [notes-2018-01-03](notes-week-01/notes-2018-01-03.ipynb) | Welcome to MATH 210! |  |
+| January 5 | 1 | [notes-2018-01-05](notes-week-01/notes-2018-01-05.ipynb) |  Jupyter notebooks and markdown | [Jupyter](https://jupyter.org), [Markdown](https://daringfireball.net/projects/markdown/), and [Python](https://python.org) |
