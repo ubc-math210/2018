@@ -1,0 +1,360 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# MATH 210 Introduction to Mathematical Computing\n",
+    "\n",
+    "## January 24, 2018\n",
+    "\n",
+    "1. Loops\n",
+    "2. Examples\n",
+    "    * Primes\n",
+    "    * Divisors\n",
+    "    * Divisor sum function\n",
+    "    * Elliptic curves"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 1. Loops\n",
+    "\n",
+    "The syntax for writing a `for` loop is:\n",
+    "\n",
+    "```\n",
+    "for item in iterable:\n",
+    "    code code code\n",
+    "    code code code\n",
+    "    code code code\n",
+    "```\n",
+    "\n",
+    "where:\n",
+    "\n",
+    "* `item` is a variable name\n",
+    "* `iterable` is any sequence object such as list, tuple, range, etc.\n",
+    "* variable item is assigned each value in iterable one at a time and the following indented code is executed each time\n",
+    "* code block in the `for` loop is indented 4 spaces"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 2. Examples\n",
+    "\n",
+    "### Primes\n",
+    "\n",
+    "A [prime number](https://en.wikipedia.org/wiki/Prime_number) $p$ is a (positive) integer divisible only by 1 and itself such as 2, 3, 5, 7, 11, ...\n",
+    "\n",
+    "Let's write a function called `primes_up_to` which takes an input parameter $N$ and returns the list of primes $p \\leq N$.\n",
+    "\n",
+    "First, let's simplify the problem by separating it into 2 parts: a function to determine if $p$ is prime and then a function to collect all the primes.\n",
+    "\n",
+    "First, let's write [pseudocode](https://en.wikipedia.org/wiki/Pseudocode) to organize our ideas:"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "```\n",
+    "def is_prime(n):\n",
+    "    \"Determine if n is a prime number.\"\n",
+    "    # for d = 2 to n-1\n",
+    "        # if n is divisible d\n",
+    "            # return False\n",
+    "    # if n is not divisible by any d\n",
+    "        # return True\n",
+    "```"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def is_prime(n):\n",
+    "    \"Determine if n is a prime number.\"\n",
+    "    for d in range(2,n):\n",
+    "        if n % d == 0:\n",
+    "            # n is divisible by d\n",
+    "            return False \n",
+    "    # n is not divisible by any d\n",
+    "    return True"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Let's test our function to see if it works properly:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "2 is prime!\n",
+      "3 is prime!\n",
+      "5 is prime!\n",
+      "7 is prime!\n",
+      "11 is prime!\n",
+      "13 is prime!\n",
+      "17 is prime!\n",
+      "19 is prime!\n",
+      "23 is prime!\n",
+      "29 is prime!\n",
+      "31 is prime!\n",
+      "37 is prime!\n",
+      "41 is prime!\n",
+      "43 is prime!\n",
+      "47 is prime!\n"
+     ]
+    }
+   ],
+   "source": [
+    "for n in range(2,50):\n",
+    "    if is_prime(n):\n",
+    "        print(n,\"is prime!\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Success! Now let's write another function (which uses the `is_prime` function) to create the list of primes up to $N$. Again, let's start with some pseudocode:"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "```\n",
+    "def primes_up_to(N):\n",
+    "    # initialize an empty list\n",
+    "    # for n = 2 to N\n",
+    "        # if n is prime\n",
+    "            # append n to the list\n",
+    "    # return the list\n",
+    "```"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def primes_up_to(N):\n",
+    "    \"Compute list of primes p =< N.\"\n",
+    "    primes = []\n",
+    "    for n in range(2,N+1):\n",
+    "        if is_prime(n):\n",
+    "            primes.append(n)\n",
+    "    return primes"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "50 : [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]\n",
+      "51 : [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]\n",
+      "52 : [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]\n",
+      "53 : [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53]\n",
+      "54 : [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53]\n",
+      "55 : [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53]\n",
+      "56 : [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53]\n",
+      "57 : [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53]\n",
+      "58 : [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53]\n",
+      "59 : [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59]\n"
+     ]
+    }
+   ],
+   "source": [
+    "for N in range(50,60):\n",
+    "    print(N,':',primes_up_to(N))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Divisors\n",
+    "\n",
+    "Write a function called `divisors` which takes an input parameter $N$, a positive integer, and returns the list of divisors of $N$."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "```\n",
+    "def divisors(N):\n",
+    "    \"Compute the list of divisors of N.\"\n",
+    "    # initialize list of divisors including 1\n",
+    "    # for d = 2 to N\n",
+    "        # if d divides N\n",
+    "            # append d to the list\n",
+    "    # append N itself to the list\n",
+    "    # return the list\n",
+    "```"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def divisors(N):\n",
+    "    \"Compute the list of divisors of N.\"\n",
+    "    divisors_list = [1]\n",
+    "    for d in range(2,N):\n",
+    "        if N % d == 0:\n",
+    "            divisors_list.append(d)\n",
+    "    divisors_list.append(N)\n",
+    "    return divisors_list"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[1, 2, 5, 10]"
+      ]
+     },
+     "execution_count": 6,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "divisors(10)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048]"
+      ]
+     },
+     "execution_count": 7,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "divisors(2048)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Divisor sum function\n",
+    "\n",
+    "Functions involving [sums of divisors](https://en.wikipedia.org/wiki/Divisor_function) are very important in number theory. For example, see [Jacobi's four-square theorem](https://en.wikipedia.org/wiki/Jacobi%27s_four-square_theorem). Write a function called `divisor_sum` which takes input parameters `N` and `k` and returns the sum\n",
+    "\n",
+    "$$\n",
+    "\\sum_{d \\ | \\ N} d^k\n",
+    "$$"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def divisor_sum(N,k):\n",
+    "    \"Compute the k power sum of divisors of N.\"\n",
+    "    return sum([d**k for d in divisors(N)])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "6"
+      ]
+     },
+     "execution_count": 9,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "divisor_sum(5,1)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Elliptic curves\n",
+    "\n",
+    "Write a function called `elliptic` which takes input parameters `A`, `B`, `C`, `x_range` and `y_range` where:\n",
+    "\n",
+    "* `A`, `B`, and `C` are integers\n",
+    "* `x_range` and `y_range` are lists of length 2 representing closed intervals $[x_0,x_1]$ and $[y_0,y_1]$\n",
+    "\n",
+    "The function returns the list of integer solutions of the elliptic curve:\n",
+    "\n",
+    "$$\n",
+    "y^2 = Ax^3 + Bx + C\n",
+    "$$\n",
+    "\n",
+    "where $x \\in [x_0,x_1]$ and $[y_0,y_1]$."
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.6.4"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}
