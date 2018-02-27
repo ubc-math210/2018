@@ -23,3 +23,7 @@ MATH 210 at the [University of British Columbia](http://www.math.ubc.ca) is an i
 | February 5 | [notes-2018-02-05](notes-week-06/notes-2018-02-05.ipynb) | Array Indexing and Slicing | [Indexing NumPy Arrays](https://docs.scipy.org/doc/numpy-dev/user/quickstart.html#indexing-slicing-and-iterating) |
 | February 7 | [notes-2018-02-07](notes-week-06/notes-2018-02-07.ipynb) | Plotting with Matplotlib | [Pyplot Commands](https://matplotlib.org/api/pyplot_summary.html) |
 | February 9 | [notes-2018-02-09](notes-week-06/notes-2018-02-09.ipynb) | Docstrings and Keyword Arguments; Numerical Integration  | [Docstrings](https://google.github.io/styleguide/pyguide.html?showone=Comments#Comments) and [Keyword Arguments](https://docs.python.org/3/tutorial/controlflow.html#keyword-arguments); [Numerical Integration](https://en.wikipedia.org/wiki/Trapezoidal_rule) |
+| February 14 | [notes-2018-02-14](notes-week-07/notes-2018-02-14.ipynb) | Error formula for the trapezoid rule | [Trapezoid rule](https://en.wikipedia.org/wiki/Trapezoidal_rule) |
+| February 16 | [notes-2018-02-16](notes-week-07/notes-2018-02-16.ipynb) | Error formula for the Simpson's rule | [Simpson's rule](https://en.wikipedia.org/wiki/Simpson%27s_rule) |
+| *Reading Week* |  |  |  |
+| February 26 | [notes-2018-02-26](notes-week-09/notes-2018-02-26.ipynb) | Review: Trapezoid rule, Simpson's rule and QUADPACK | [QUADPACK in SciPy](https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.quad.html) |
